@@ -222,4 +222,10 @@ Resultado: `docker rm` y `docker stop` devuelven el nombre del contenedor, `dock
 | Construir la imagen              | `docker build -t actividades-php:v1 .`                               |
 | Listar imágenes                  | `docker images`                                                      |
 | Crear y ejecutar el contenedor   | `docker run -d --name actividades-web -p 8080:80 actividades-php:v1` |
-| Listar contenedores
+| Listar contenedores (en marcha)  | `docker ps`                                                          |
+| Listar todos los contenedores    | `docker ps -a`                                                       |
+| Ver los registros                | `docker logs actividades-web`                                        |
+| Detener el contenedor            | `docker stop actividades-web`                                        |
+| Volver a iniciarlo               | `docker start actividades-web`                                       |
+| Eliminar el contenedor           | `docker rm actividades-web`                                          |
+| Eliminar la imagen               | `docker rmi actividades-php:v1`                                      |
