@@ -1,12 +1,8 @@
 # Práctica P02: Servidor PHP con Docker
 
-- Alumno: Julen Escosteguy Lescano
-- Curso: 2º DAM O
-- Asignatura: Sistemas de Gestión Empresarial
-
 ## 1. Objetivo
 
-Desarrollar una aplicación web con HTML, CSS y PHP para inscribirse en actividades de un centro educativo y desplegarla con Docker, usando la imagen base `php:8.3-apache`, que incluye PHP y Apache configurados para trabajar juntos.
+Desarrollar una aplicación web con HTML, CSS y PHP para realizar inscripciones en actividades de un centro educativo y desplegarla con Docker, utilizando la imagen base `php:8.3-apache`, que incluye PHP y Apache configurados para trabajar juntos.
 
 ## 2. Estructura del proyecto
 
@@ -42,7 +38,7 @@ Antes de construir la imagen se probó la aplicación con un contenedor temporal
 - `-p 8080:80`: publica el puerto 80 del contenedor en el 8080 del anfitrión.
 - `-v ruta_host:ruta_contenedor`: monta la carpeta del proyecto en la del servidor.
 
-Al terminar las pruebas se eliminó:
+Al finalizar las pruebas se eliminó:
 
     docker rm -f actividades-dev
 
@@ -76,18 +72,18 @@ Al terminar las pruebas se eliminó:
 - `-p 8080:80`: el puerto 80 del contenedor queda disponible en el 8080 del equipo anfitrión.
 - `actividades-php:v1`: imagen utilizada.
 
-Se accede a la aplicación en `http://localhost:8080`.
+La aplicación está disponible en `http://localhost:8080`.
 
 ## 7. Comprobaciones obligatorias
 
-### 7.1 Imagen construida correctamente
+### 7.1. Construcción construida correctamente
 
     docker build -t actividades-php:v1 .
     docker images
 
-Resultado: la construcción terminó sin errores (`FINISHED`) y la imagen `actividades-php:v1` aparece en la lista de imágenes.
+Resultado: la construcción terminó sin errores (`FINISHED`) y la imagen `actividades-php:v1` aparece en la listado de imágenes.
 
-### 7.2 Contenedor en ejecución
+### 7.2. Comprobación del contenedor en ejecución
 
     docker ps
 
@@ -98,7 +94,7 @@ Resultado:
 
 El contenedor `actividades-web` está en estado `Up`, con el puerto 8080 del anfitrión asociado al 80 del contenedor.
 
-### 7.3 Acceso al formulario desde el navegador
+### 7.3. Acceso al formulario desde el navegador
 
     xdg-open http://localhost:8080
 
@@ -180,7 +176,7 @@ Resultado:
     172.17.0.1 - - [06/Nov/2026:21:24:49 +0000] "POST /procesar.php HTTP/1.1" 200 900 "http://localhost:8080/" "Mozilla/5.0 (X11; Linux x86_64; rv:156.0) Gecko/20100101 Firefox/156.0"
     172.17.0.1 - - [06/Nov/2026:21:24:53 +0000] "GET /index.html HTTP/1.1" 200 1326 "http://localhost:8080/procesar.php" "Mozilla/5.0 (X11; Linux x86_64; rv:156.0) Gecko/20100101 Firefox/156.0"
 
-Apache arrancó correctamente y se registran las peticiones recibidas. El aviso `AH00558` es informativo (falta definir `ServerName`) y no afecta al funcionamiento.
+Apache arranca correctamente y se registran las peticiones recibidas. El aviso `AH00558` es informativo (falta definir `ServerName`) y no afecta al funcionamiento.
 
 ### 7.9 Detener el contenedor y comprobar su estado
 
@@ -215,7 +211,7 @@ El contenedor vuelve a estar `Up` y la aplicación sigue funcionando en `http://
     docker ps -a
     docker images
 
-Primero se detiene y elimina el contenedor y después la imagen, porque Docker no permite borrar una imagen mientras un contenedor la utiliza.
+Primero se detiene y elimina el contenedor y después la imagen, porque Docker no permite eliminar una imagen mientras un contenedor la utiliza.
 
 Resultado: `docker rm` y `docker stop` devuelven el nombre del contenedor, `docker rmi` muestra `Untagged: actividades-php:v1` y `Deleted: sha256:...`, y ni `docker ps -a` ni `docker images` muestran ya el contenedor `actividades-web` ni la imagen `actividades-php:v1`.
 
