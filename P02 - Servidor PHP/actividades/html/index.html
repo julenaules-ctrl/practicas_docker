@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción a actividades</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Inscripción del alumnado</h1>
+
+        <p class="descripcion">
+            Introduce tus datos académicos:
+        </p>
+
+        <form action="procesar.php" method="POST">
+
+            <div class="grupo">
+                <label for="nombre">Nombre y apellidos:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="grupo">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+
+            <div class="grupo">
+                <label for="actividad">Actividad:</label>
+                <select id="actividad" name="actividad" required>
+                    <option value="">Selecciona una actividad</option>
+                    <option value="Robótica">Robótica</option>
+                    <option value="Desarrollo de videojuegos">Desarrollo de videojuegos</option>
+                    <option value="Ciberseguridad">Ciberseguridad</option>
+                    <option value="Diseño e impresión 3D">Diseño e impresión 3D</option>
+                </select>
+            </div>
+
+            <div class="opciones">
+
+                <p class="titulo-opciones">
+                    Turno:
+                </p>
+
+                <label class="opcion" for="manana">
+                    <input
+                        type="radio"
+                        id="manana"
+                        name="turno"
+                        value="Mañana"
+                        required
+                    >
+                    Mañana
+                </label>
+
+                <label class="opcion" for="tarde">
+                    <input
+                        type="radio"
+                        id="tarde"
+                        name="turno"
+                        value="Tarde"
+                    >
+                    Tarde
+                </label>
+
+            </div>
+
+            <div class="opciones">
+
+                <p class="titulo-opciones">
+                    Material necesario:
+                </p>
+
+                <label class="opcion" for="portatil">
+                    <input
+                        type="checkbox"
+                        id="portatil"
+                        name="portatil"
+                        value="20"
+                    >
+                    Ordenador portátil (20 €)
+                </label>
+
+                <label class="opcion" for="auriculares">
+                    <input
+                        type="checkbox"
+                        id="auriculares"
+                        name="auriculares"
+                        value="10"
+                    >
+                    Auriculares (10 €)
+                </label>
+
+                <label class="opcion" for="escritura">
+                    <input
+                        type="checkbox"
+                        id="escritura"
+                        name="escritura"
+                        value="5"
+                    >
+                    Material de escritura (5 €)
+                </label>
+
+            </div>
+
+            <div class="grupo">
+                <label for="observaciones">Observaciones:</label>
+                <textarea id="observaciones" name="observaciones" rows="4"></textarea>
+            </div>
+
+            <div class="botones">
+                <button type="submit" class="enviar">
+                    Enviar formulario
+                </button>
+
+                <button type="reset" class="limpiar">
+                    Limpiar
+                </button>
+            </div>
+
+        </form>
+
+        <p class="nota">
+            Los datos introducidos se enviarán al servidor mediante
+            el método POST.
+        </p>
+
+    </div>
+
+</body>
+</html>
